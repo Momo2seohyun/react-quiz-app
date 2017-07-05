@@ -1,35 +1,62 @@
-import React, { Component } from 'react';
-import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import React, { Component } from "react";
+import { GridList, GridTile } from "material-ui/GridList";
+import IconButton from "material-ui/IconButton";
+import PlayArrow from "material-ui/svg-icons/av/play-arrow";
+import ArrowForward from "material-ui/svg-icons/navigation/arrow-forward";
 
-import './Pages.css'
+import Cards from "../components/Cards";
+import "./Pages.css";
 
-export class Dashboard extends Component {
-	render() {
-		return (
-			<div style={{flex: 1, flexDirection: 'column'}}>
-				<Card style={styles.card} className="dashBoardCard">
-					<CardTitle title="Card title" subtitle="Card subtitle" />
-					<CardText>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-						Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-						Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-					</CardText>
-					<CardActions>
-						<FlatButton label="Action1" />
-						<FlatButton label="Action2" />
-					</CardActions>
-				</Card>
-			</div>
-		)
-	}
-}
+import { tilesData } from "../../__mocks__/mocksCard";
+
+export const calSize = size => {
+  if (size === "big") {
+    return 2;
+  }
+  return 1;
+};
+
+export const Dashboard = props => {
+  return (
+    <div style={styles.root}>
+      <GridList cols={6} padding={8} style={styles.gridList}>
+        {tilesData.map((tile, index) => (
+          <GridTile
+            key={index}
+            title={tile.title}
+            titleStyle={{ color: tile.color }}
+            actionIcon={
+              <IconButton>
+                {tile.setting
+                  ? <ArrowForward color={tile.color} />
+                  : <PlayArrow color={tile.color} />}
+              </IconButton>
+            }
+            titleBackground={tile.titleBackground}
+            cols={calSize(tile.cols)}
+            rows={calSize(tile.rows)}
+            className="gridItem"
+          >
+            <img src={tile.img} />
+          </GridTile>
+        ))}
+      </GridList>
+    </div>
+  );
+};
 
 const styles = {
-	card: {
-		margin: '2em'
-	}
-}
+  root: {
+    display: "flex",
+    justifyContent: "space-around",
+    backgroundColor: "#444",
+    padding: "8px 0px"
+  },
+  gridList: {
+    width: "100vw",
+    height: "100vh",
+    overflowY: "hidden"
+  }
+};
 
 export default Dashboard;
