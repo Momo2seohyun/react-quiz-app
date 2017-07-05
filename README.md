@@ -1,4 +1,4 @@
-React-Quiz-App by Konga
+# React-Quiz-App by Konga #
 
 **05 July 2017**
 
