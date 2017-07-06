@@ -2,60 +2,64 @@ import React, { Component } from "react";
 import { GridList, GridTile } from "material-ui/GridList";
 import IconButton from "material-ui/IconButton";
 import PlayArrow from "material-ui/svg-icons/av/play-arrow";
-import ArrowForward from "material-ui/svg-icons/navigation/arrow-forward";
 
 import Cards from "../components/Cards";
 import "./Pages.css";
 
 import { tilesData } from "../../__mocks__/mocksCard";
 
-export const calSize = size => {
-  if (size === "big") {
-    return 2;
-  }
-  return 1;
-};
+export const rowSize = value => {
+  if (value < 10) {
+    return 3
+  } return 2
+}
+
+export const colSize = value => {
+  if (value === 0 || value === 4) {
+    return 4
+  } return 2
+}
 
 export const Dashboard = props => {
   return (
-    <div style={styles.root}>
-      <GridList cols={6} padding={8} style={styles.gridList}>
-        {tilesData.map((tile, index) => (
-          <GridTile
-            key={index}
-            title={tile.title}
-            titleStyle={{ color: tile.color }}
-            actionIcon={
-              <IconButton>
-                {tile.setting
-                  ? <ArrowForward color={tile.color} />
-                  : <PlayArrow color={tile.color} />}
-              </IconButton>
-            }
-            titleBackground={tile.titleBackground}
-            cols={calSize(tile.cols)}
-            rows={calSize(tile.rows)}
-            className="gridItem"
-          >
-            <img src={tile.img} />
-          </GridTile>
-        ))}
+    <div style={styles.container}>
+      <GridList cols={8} padding={8} style={styles.gridList}>
+        {
+          tilesData.map((tile, index) => {
+            return (
+              <GridTile
+                key={index}
+                title={tile.title}
+                titleStyle={{ color: tile.color }}
+                titleBackground={tile.titleBackground}
+                actionIcon={<IconButton><PlayArrow color={tile.color} /></IconButton>}
+                cols={colSize(index)}
+                rows={rowSize(index)}
+              >
+                <img src={tile.img} />
+              </GridTile>
+            )
+          })
+        }
       </GridList>
     </div>
-  );
+  )
 };
 
 const styles = {
-  root: {
-    display: "flex",
-    justifyContent: "space-around",
+  container: {
+    display: 'flex',
+    overflowY: 'hidden',
+    justifyContent: 'space-around',
     backgroundColor: "#444",
-    padding: "8px 0px"
+    padding: "8px 0px",
+    width: '100vW',
+    height: '100vH'
   },
   gridList: {
-    width: "100vw",
-    height: "100vh",
-    overflowY: "hidden"
+    width: '100vW',
+    height: '100vH',
+    overflowY: 'auto',
   }
 };
 
