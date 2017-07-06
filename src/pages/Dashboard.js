@@ -35,6 +35,7 @@ export const Dashboard = props => {
                 actionIcon={<IconButton><PlayArrow color={tile.color} /></IconButton>}
                 cols={colSize(index)}
                 rows={rowSize(index)}
+                className="gridItem"
               >
                 <img src={tile.img} />
               </GridTile>

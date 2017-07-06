@@ -9,6 +9,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import LockIcon from 'material-ui/svg-icons/action/lock-outline';
 
+import { AddUser } from '../actions'
 import { Required, isLetter } from '../../helpers/validate'
 import './Pages.css'
 
@@ -24,21 +25,18 @@ export class Login extends Component {
     this.closeSnackBar = this.closeSnackBar.bind(this)
   }
   login(props) {
-    let { displayName } = props.displayName
+    let displayName = props.displayName
     let self = this
 
     this.setState({
       loaded: false
     })
 
-    // writeUserData((displayName) => {
-    //   firebase.database().ref('users/' + userId).set({
-    //     displayName: name
-    //   });
-    // })
-
     firebase.auth().signInAnonymously()
       .then((respons) => {
+        firebase.database().ref('/users/' + respons.uid).set({
+          displayName: displayName
+        });
         self.setState({
           signInError: false,
           loaded: true

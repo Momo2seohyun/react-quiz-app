@@ -8,7 +8,7 @@
 }
 
 .gridItem {
-  animation: fade-up 1s;
+  animation: fade-up 0.5s;
 }
 
 @keyframes fade-up {
