@@ -1,4 +1,4 @@
-(function($){
+export default function (){
 	$(function(){
 
 
@@ -104,4 +104,4 @@
     });
 
 	}); // end of document ready
-})(jQuery); // end of jQuery name space
+}(jQuery); // end of jQuery name space

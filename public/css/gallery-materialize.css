@@ -8929,6 +8929,10 @@ nav .categories-wrapper .categories-container .categories > li {
   transition: transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63), box-shadow 0.3s, -webkit-transform 0.4s cubic-bezier(0.53, 0.01, 0.36, 1.63);
 }
 
+nav #placeholder-navbar {
+  z-index: 20;
+}
+
 #placeholder-navbar {
   position: fixed;
   top: 0;

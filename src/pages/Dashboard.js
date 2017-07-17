@@ -8,27 +8,38 @@ import "./Pages.css";
 
 import { tilesData } from "../../__mocks__/mocksCard";
 
+import init from '../../public/js/init';
+
 export const rowSize = value => {
   if (value < 10) {
     return 3
-  } return 2
+  }
+  return 2
 }
 
 export const colSize = value => {
   if (value === 0 || value === 4) {
     return 4
-  } return 2
+  }
+  return 2
 }
 
-export const Dashboard = props => {
-  return (
-    <div id="portfolio" className="section gray">
+export class Dashboard extends Component {
+  constructor(props){
+    super(props)
+  }
+  componentDidMount() {
+    init()
+  }
+  render() {
+    return (
+      <div id="portfolio" className="section gray">
       <div className="container">
         <div className="gallery row">
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img className="responsive-img" src="http://placehold.it/350x250" alt="placeholder" />
+                <img className="responsive-img" src="images/001.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Aquamarine</span>
@@ -42,16 +53,6 @@ export const Dashboard = props => {
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -61,7 +62,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img src="http://placehold.it/350x300" alt="placeholder" />
+                <img src="images/002.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Sun</span>
@@ -75,16 +76,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -94,7 +85,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter bigbang">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img className="responsive-img" src="http://placehold.it/350x280" alt="placeholder" />
+                <img className="responsive-img" src="images/003.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Big Bang 1</span>
@@ -108,16 +99,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -127,7 +108,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img src="http://placehold.it/350x320" alt="placeholder" />
+                <img src="images/004.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Maze</span>
@@ -141,16 +122,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -160,7 +131,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img src="http://placehold.it/350x260" alt="placeholder" />
+                <img src="images/005.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Ice</span>
@@ -174,16 +145,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -193,7 +154,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img src="http://placehold.it/350x290" alt="placeholder" />
+                <img src="images/006.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Cave</span>
@@ -207,16 +168,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -226,7 +177,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img src="http://placehold.it/350x240" alt="placeholder" />
+                <img src="images/007.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Grapefruit</span>
@@ -241,17 +192,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
-
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -261,7 +201,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
           <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter bigbang">
             <div className="gallery-curve-wrapper">
               <a className="gallery-cover gray">
-                <img className="responsive-img" src="http://placehold.it/350x300" alt="placeholder" />
+                <img className="responsive-img" src="images/008.jpg" alt="placeholder" />
               </a>
               <div className="gallery-header">
                 <span>Big Bang 2</span>
@@ -275,16 +215,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -308,16 +238,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -342,16 +262,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -376,16 +286,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -410,16 +310,6 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 Literally venmo before they sold out, DIY heirloom forage polaroid offal yr pop-up selfies health goth. Typewriter scenester hammock truffaut meditation, squid before they sold out polaroid portland tousled taxidermy vice. Listicle butcher thundercats, taxidermy pitchfork next level roof party crucifix narwhal kinfolk you probably haven't heard of them portland small batch.</p>
                 <p className="description">
 Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. Drinking vinegar marfa you probably haven't heard of them consequat post-ironic, shabby chic williamsburg raclette vaporware readymade selfies brunch. Venmo selvage biodiesel marfa. Tbh literally 3 wolf moon, proident elit raclette chambray consequat edison bulb four loko accusamus. Semiotics godard eiusmod, ex esse air plant quinoa vaporware selfies keytar. Actually yuccie ennui flannel single-origin coffee, williamsburg cardigan banjo forage pug distillery tumblr hexagon vinyl occaecat.</p>
-
-                <div className="carousel-wrapper">
-                  <div className="carousel">
-                    <a className="carousel-item" href="#one!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#two!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#three!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#four!"><img src="http://placehold.it/300x200" /></a>
-                    <a className="carousel-item" href="#five!"><img src="http://placehold.it/300x200" /></a>
-                  </div>
-                </div>
               </div>
               <div className="gallery-action">
                 <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>
@@ -431,7 +321,7 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
 
       </div>
     </div>
-    
+
     /*<div style={styles.container}>
       <GridList cols={8} padding={8} style={styles.gridList}>
         {
@@ -454,8 +344,9 @@ Ea salvia adipisicing vegan man bun. Flexitarian cupidatat skateboard flannel. D
         }
       </GridList>
     </div>*/
-  )
-};
+    )
+  }
+}
 
 const styles = {
   container: {
