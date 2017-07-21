@@ -42,6 +42,7 @@ class App extends Component {
           : <div><AppBar
             showMenuIconButton={false}
             title={displayName}
+            style={styles.appBar}
             iconElementRight={
               <IconMenu
                 iconButtonElement={
@@ -72,6 +73,10 @@ const styles = {
     minHeight: '100vh',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  appBar: {
+    zIndex: 9,
+    backgroundColor: '#ba68c8'
   }
 }
 
