@@ -10,7 +10,7 @@ import Snackbar from 'material-ui/Snackbar';
 import LockIcon from 'material-ui/svg-icons/action/lock-outline';
 
 import { AddUser } from '../actions'
-import { Required, isLetter } from '../../helpers/validate'
+import { Required, isLetter } from '../helpers/validate'
 import './Pages.css'
 
 export class Login extends Component {
