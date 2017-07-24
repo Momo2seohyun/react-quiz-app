@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.16.2",
     "firebase": "^4.1.2",
     "jquery": "^3.2.1",
     "material-ui": "^0.18.3",
     "materialize-css": "^0.99.0",
+    "moment": "^2.18.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-materialize": "^1.0.1",
