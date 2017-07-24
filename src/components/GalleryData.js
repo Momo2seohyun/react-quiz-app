@@ -13,19 +13,13 @@ class GalleryData extends Component {
 
   render() {
     const data = this.props.data
-    const styles = {
-      galleryHeader: {
-        backgroundColor: data.titleBackground,
-        color: data.color
-      }
-    }
     return (
       <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
         <div className="gallery-curve-wrapper">
           <a className="gallery-cover gray">
             <img className="responsive-img" src={data.img} alt="placeholder" />
           </a>
-          <div className="gallery-header" style={styles.galleryHeader}>
+          <div className={`gallery-header ${data.titleColor}`}>
             <span>{data.title}</span>
           </div>
           <div className="gallery-body">
@@ -41,7 +35,5 @@ class GalleryData extends Component {
     )
   }
 }
-
-
 
 export default GalleryData

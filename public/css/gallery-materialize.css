@@ -8865,8 +8865,31 @@ nav .categories-wrapper .categories-container .categories > li {
 .gallery .gallery-header {
   position: relative;
   padding: 20px;
-  background-color: #fff;
-  color: #444;
+}
+
+.gallery .header-color-grey {
+  background-color: #999;
+  color: white;
+}
+.gallery .header-color-green {
+  background-color: #1de9b6;
+  color: #616161;
+}
+.gallery .header-color-yellow {
+  background-color: #ffeb3b;
+  color: #616161;
+}
+.gallery .header-color-blue {
+  background-color: #03A9F4;
+  color: white;
+}
+.gallery .header-color-purple {
+  background-color: #7e57c2;
+  color: white;
+}
+.gallery .header-color-red {
+  background-color: #ff5252;
+  color: white;
 }
 
 .gallery .gallery-header h1, .gallery .gallery-header h2, .gallery .gallery-header h3, .gallery .gallery-header h4, .gallery .gallery-header h5 {
