@@ -4,8 +4,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 
 import LessonOne from './LessonOne'
+import LessonTwo from './LessonTwo'
 
 class Quiz extends Component {
   constructor(props) {
@@ -13,38 +15,102 @@ class Quiz extends Component {
     this.state = {
       stepIndex: 0,
       finished: false,
+      loading: false,
       disabledBtn: true,
-      lessonOne: null,
-      pointOne: 0,
+      open: false,
+      lessonOne: {
+        point: 0
+      },
+      lessonTwo: {
+        point: 0
+      },
+      massage: ""
     }
   }
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
+
+  dummyAsync(cb){
+    this.setState({loading: true}, () => {
+      this.asyncTimer = setTimeout(cb, 500);
+    });
+  };
 
   handleNext() {
-    const {stepIndex, lessonOne} = this.state;
-    console.log(lessonOne)
-    this.setState({
-      stepIndex: stepIndex + 1,
-      finished: stepIndex >= 2,
-    })
-  }
-
-  handlePrev() {
-    const {stepIndex} = this.state;
-    if (stepIndex > 0) {
-      this.setState({stepIndex: stepIndex - 1});
+    const {stepIndex, lessonOne, lessonTwo} = this.state;
+    if(stepIndex === 0) {
+      if(lessonOne.color === "green") {
+        this.setState({
+          lessonOne: {
+            point: 1
+          },
+          open: true,
+          massage: "You got 1 point"
+        })
+      } else {
+        this.setState({
+           lessonOne: {
+            point: 0
+          },
+          open: true,
+          massage: "You got 0 point"
+        })
+      }
+    } else if(stepIndex === 1) {
+      if(lessonTwo.num === 2) {
+        this.setState({
+          lessonTwo: {
+            point: 1
+          },
+          open: true,
+          massage: "You got 1 point"
+        })
+      } else {
+        this.setState({
+           lessonTwo: {
+            point: 0
+          },
+          open: true,
+          massage: "You got 0 point"
+        })
+      }
     }
+    if (!this.state.loading) {
+        this.dummyAsync(() => this.setState({
+          loading: false,
+          stepIndex: stepIndex + 1,
+          finished: stepIndex >= 2,
+        }));
+      }
   }
 
-  color(value) {
+   handlePrev() {
+    const {stepIndex} = this.state;
+    if (!this.state.loading) {
+      this.dummyAsync(() => this.setState({
+        loading: false,
+        stepIndex: stepIndex - 1,
+      }));
+    }
+  };
+
+  anwswerOne(value) {
     this.setState({lessonOne: value, disabledBtn: false})
+  }
+  anwswerTwo(value) {
+    this.setState({lessonTwo: value, disabledBtn: false})
   }
 
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <LessonOne color={this.color.bind(this)} />;
+        return <LessonOne anwswerOne={this.anwswerOne.bind(this)} />;
       case 1:
-        return 'What is an ad group anyways?';
+        return <LessonTwo anwswerTwo={this.anwswerTwo.bind(this)} />;
       case 2:
         return 'This is the bit I really care about!';
       default:
@@ -108,6 +174,7 @@ class Quiz extends Component {
 
   render() {
     let {stepIndex, loading} = this.state
+    console.log(this.state.lessonTwo)
     return (
       <div style={styles.stepper}>
         <Stepper activeStep={stepIndex}>
@@ -124,6 +191,12 @@ class Quiz extends Component {
         <ExpandTransition loading={loading} open={true}>
           {this.renderContent()}
         </ExpandTransition>
+        <Snackbar
+          open={this.state.open}
+          message={this.state.massage}
+          autoHideDuration={2000}
+          onRequestClose={this.handleRequestClose.bind(this)}
+        />
       </div>
     )
   }

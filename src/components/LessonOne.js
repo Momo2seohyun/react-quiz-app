@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 
 class LessonOne extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      point: null,
       disabled: true
     };
   }
@@ -17,8 +14,8 @@ class LessonOne extends Component {
     this.setState({
       disabled: false
     })
-    this.props.color({
-      LessonOne: value
+    this.props.anwswerOne({
+      color: value
     })
   }
 
