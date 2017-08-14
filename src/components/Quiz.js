@@ -12,39 +12,26 @@ class Quiz extends Component {
     super(props)
     this.state = {
       stepIndex: 0,
-      loading: false,
       finished: false,
       disabledBtn: true,
-      lessonOne: null
+      lessonOne: null,
+      pointOne: 0,
     }
-  }
-
-  dummyAsync(cb) {console.log(cb)
-    this.setState({
-      loading: true
-    }, () => {
-      this.asyncTimer = setTimeout(cb, 500);
-    });
   }
 
   handleNext() {
-    const {stepIndex} = this.state;
-    if (!this.state.loading) {
-      this.dummyAsync(() => this.setState({
-        loading: false,
-        stepIndex: stepIndex + 1,
-        finished: stepIndex >= 2,
-      }));
-    }
+    const {stepIndex, lessonOne} = this.state;
+    console.log(lessonOne)
+    this.setState({
+      stepIndex: stepIndex + 1,
+      finished: stepIndex >= 2,
+    })
   }
 
   handlePrev() {
     const {stepIndex} = this.state;
-    if (!this.state.loading) {
-      this.dummyAsync(() => this.setState({
-        loading: false,
-        stepIndex: stepIndex - 1,
-      }));
+    if (stepIndex > 0) {
+      this.setState({stepIndex: stepIndex - 1});
     }
   }
 
@@ -121,7 +108,6 @@ class Quiz extends Component {
 
   render() {
     let {stepIndex, loading} = this.state
-    console.log(this.state.lessonOne)
     return (
       <div style={styles.stepper}>
         <Stepper activeStep={stepIndex}>
