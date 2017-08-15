@@ -15,7 +15,7 @@ class LessonTwo extends Component {
       disabled: false,
       sliderValue: value
     });
-    this.props.anwswerTwo({
+    this.props.answerTwo({
       num: value
     })
   };

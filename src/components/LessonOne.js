@@ -14,7 +14,7 @@ class LessonOne extends Component {
     this.setState({
       disabled: false
     })
-    this.props.anwswerOne({
+    this.props.answerOne({
       color: value
     })
   }

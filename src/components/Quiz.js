@@ -8,6 +8,8 @@ import Snackbar from 'material-ui/Snackbar';
 
 import LessonOne from './LessonOne'
 import LessonTwo from './LessonTwo'
+import LessonThree from './LessonThree'
+import LessonFour from './LessonFour'
 
 class Quiz extends Component {
   constructor(props) {
@@ -19,10 +21,16 @@ class Quiz extends Component {
       disabledBtn: true,
       open: false,
       lessonOne: {
-        point: 0
+        point: null
       },
       lessonTwo: {
-        point: 0
+        point: null
+      },
+      lessonThree: {
+        point: null
+      },
+      lessonFour: {
+        point: null
       },
       massage: ""
     }
@@ -32,63 +40,111 @@ class Quiz extends Component {
     this.setState({
       open: false,
     });
-  };
+  }
+  ;
 
-  dummyAsync(cb){
-    this.setState({loading: true}, () => {
+  dummyAsync(cb) {
+    this.setState({
+      loading: true
+    }, () => {
       this.asyncTimer = setTimeout(cb, 500);
     });
-  };
+  }
+  ;
 
   handleNext() {
-    const {stepIndex, lessonOne, lessonTwo} = this.state;
-    if(stepIndex === 0) {
-      if(lessonOne.color === "green") {
+    const {stepIndex, lessonOne, lessonTwo, lessonThree, lessonFour} = this.state;
+    if (stepIndex === 0) {
+      if (lessonOne.color === "green") {
         this.setState({
           lessonOne: {
             point: 1
           },
           open: true,
+          disabledBtn: true,
           massage: "You got 1 point"
         })
       } else {
         this.setState({
-           lessonOne: {
+          lessonOne: {
             point: 0
           },
           open: true,
+          disabledBtn: true,
           massage: "You got 0 point"
         })
       }
-    } else if(stepIndex === 1) {
-      if(lessonTwo.num === 2) {
+    } else if (stepIndex === 1) {
+      if (lessonTwo.num === 2) {
         this.setState({
           lessonTwo: {
             point: 1
           },
           open: true,
+          disabledBtn: true,
           massage: "You got 1 point"
         })
       } else {
         this.setState({
-           lessonTwo: {
+          lessonTwo: {
             point: 0
           },
           open: true,
+          disabledBtn: true,
+          massage: "You got 0 point"
+        })
+      }
+    } else if (stepIndex === 2) {
+      if (lessonThree.answer === "elephant") {
+        this.setState({
+          lessonThree: {
+            point: 1
+          },
+          open: true,
+          disabledBtn: true,
+          massage: "You got 1 point"
+        })
+      } else {
+        this.setState({
+          lessonThree: {
+            point: 0
+          },
+          open: true,
+          disabledBtn: true,
+          massage: "You got 0 point"
+        })
+      }
+    } else if (stepIndex === 3) {
+      if (lessonFour.answer === true) {
+        this.setState({
+          lessonFour: {
+            point: 1
+          },
+          open: true,
+          disabledBtn: true,
+          massage: "You got 1 point"
+        })
+      } else {
+        this.setState({
+          lessonFour: {
+            point: 0
+          },
+          open: true,
+          disabledBtn: true,
           massage: "You got 0 point"
         })
       }
     }
     if (!this.state.loading) {
-        this.dummyAsync(() => this.setState({
-          loading: false,
-          stepIndex: stepIndex + 1,
-          finished: stepIndex >= 2,
-        }));
-      }
+      this.dummyAsync(() => this.setState({
+        loading: false,
+        stepIndex: stepIndex + 1,
+        finished: stepIndex >= 3,
+      }));
+    }
   }
 
-   handlePrev() {
+  handlePrev() {
     const {stepIndex} = this.state;
     if (!this.state.loading) {
       this.dummyAsync(() => this.setState({
@@ -96,23 +152,44 @@ class Quiz extends Component {
         stepIndex: stepIndex - 1,
       }));
     }
-  };
-
-  anwswerOne(value) {
-    this.setState({lessonOne: value, disabledBtn: false})
   }
-  anwswerTwo(value) {
-    this.setState({lessonTwo: value, disabledBtn: false})
+  ;
+
+  answerOne(value) {
+    this.setState({
+      lessonOne: value,
+      disabledBtn: false
+    })
+  }
+  answerTwo(value) {
+    this.setState({
+      lessonTwo: value,
+      disabledBtn: false
+    })
+  }
+  answerThree(value) {
+    this.setState({
+      lessonThree: value,
+      disabledBtn: false
+    })
+  }
+  answerFour(value) {
+    this.setState({
+      lessonFour: value,
+      disabledBtn: false
+    })
   }
 
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <LessonOne anwswerOne={this.anwswerOne.bind(this)} />;
+        return <LessonOne answerOne={this.answerOne.bind(this)} />;
       case 1:
-        return <LessonTwo anwswerTwo={this.anwswerTwo.bind(this)} />;
+        return <LessonTwo answerTwo={this.answerTwo.bind(this)} />;
       case 2:
-        return 'This is the bit I really care about!';
+        return <LessonThree answerThree={this.answerThree.bind(this)} />;
+      case 3:
+        return <LessonFour answerFour={this.answerFour.bind(this)} />;
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -162,7 +239,7 @@ class Quiz extends Component {
       }}
       />
           <RaisedButton
-      label={stepIndex === 2 ? 'Finish' : 'Next'}
+      label={stepIndex === 3 ? 'Finish' : 'Next'}
       primary={true}
       disabled={this.state.disabledBtn}
       onTouchTap={this.handleNext.bind(this)}
@@ -174,7 +251,7 @@ class Quiz extends Component {
 
   render() {
     let {stepIndex, loading} = this.state
-    console.log(this.state.lessonTwo)
+    //console.log(this.state.lessonFour)
     return (
       <div style={styles.stepper}>
         <Stepper activeStep={stepIndex}>
@@ -187,16 +264,19 @@ class Quiz extends Component {
           <Step>
             <StepLabel>Lesson 3</StepLabel>
           </Step>
+          <Step>
+            <StepLabel>Lesson 4</StepLabel>
+          </Step>
         </Stepper>
         <ExpandTransition loading={loading} open={true}>
           {this.renderContent()}
         </ExpandTransition>
         <Snackbar
-          open={this.state.open}
-          message={this.state.massage}
-          autoHideDuration={2000}
-          onRequestClose={this.handleRequestClose.bind(this)}
-        />
+      open={this.state.open}
+      message={this.state.massage}
+      autoHideDuration={2000}
+      onRequestClose={this.handleRequestClose.bind(this)}
+      />
       </div>
     )
   }
@@ -205,7 +285,6 @@ class Quiz extends Component {
 const styles = {
   stepper: {
     width: '100%',
-    maxWidth: 700,
     margin: 'auto'
   },
   contentStyle: {
