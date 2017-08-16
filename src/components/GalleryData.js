@@ -71,14 +71,15 @@ class GalleryData extends Component {
           </div>
           <div className="gallery-body">
             <div className="title-wrapper">
-              <h3>{weather.location.city + ", " + weather.location.country}</h3>
-              <span className="price">{weather.lastBuildDate}</span>
+              <h3>{data.title}</h3>
+              {/*<h3>{weather.location.city + ", " + weather.location.country}</h3>
+              <span className="price">{weather.lastBuildDate}</span>*/}
             </div>
            {/* <p className="description">Temperature - {weather.item.condition.temp + "° " + weather.units.temperature + ", " + weather.item.condition.text}</p>
             <p className="description">Wind - {weather.wind.speed + " " + weather.units.speed}</p>
             <p className="description">Sunrise - {weather.astronomy.sunrise}</p>
             <p className="description">Sunset - {weather.astronomy.sunset}</p>*/}
-            <Quiz />
+            <Quiz titleColor={data.titleColor} />
           </div>
           <div className="gallery-action">
             <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>

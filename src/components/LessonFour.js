@@ -35,8 +35,10 @@ class LessonFour extends Component {
 
   render() {
     return (
-      <div>
-        <p>เลือดมนุษย์มีสีแดง ?</p>
+      <div style={styles.container}>
+        <div style={styles.question} className={`${this.props.titleColor}`}>
+          <h5>เลือดมนุษย์มีสีแดง ?</h5>
+        </div>
         <div style={styles.btn}>
           <FlatButton label="True" onTouchTap={this.handleTrue.bind(this)} rippleColor="green" style={this.state.bgTrue} />
           <FlatButton label="False" onTouchTap={this.handlefalse.bind(this)} rippleColor="red" style={this.state.bgFalse} />
@@ -50,7 +52,8 @@ const styles = {
   btn: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: '2em 1em'
   },
   btnMargin: {
     margin: '0em 1em',
@@ -64,6 +67,14 @@ const styles = {
     backgroundColor: '#00e676',
     color: 'white',
     margin: '0em 1em',
+  },
+  container: {
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+  },
+  question: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '2em 1em'
   }
 }
 

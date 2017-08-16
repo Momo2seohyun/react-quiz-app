@@ -21,12 +21,33 @@ class LessonThree extends Component {
 
   render() {
     return (
-      <div>
-        <p>สัตว์ประจำชาติคือ ?</p>
-        <TextField hintText="Fill in the Blank" onChange={this.handleChange.bind(this)} />
+      <div style={styles.container}>
+        <div style={styles.question} className={`${this.props.titleColor}`}>
+          <h5>สัตว์ประจำชาติคือ ?</h5>
+        </div>
+        <div style={styles.answer}>
+          <TextField hintText="Fill in the Blank" onChange={this.handleChange.bind(this)} />
+        </div>
       </div>
     )
   }
 }
+
+const styles = {
+  container: {
+    boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+  },
+  question: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '2em 1em'
+  },
+  answer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    padding: '2em 1em'
+  }
+};
 
 export default LessonThree
