@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Step, Stepper, StepButton, StepLabel } from 'material-ui/Stepper';
+import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import ExpandTransition from 'material-ui/internal/ExpandTransition';
@@ -7,14 +8,16 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Done from 'material-ui/svg-icons/action/done';
+import Clear from 'material-ui/svg-icons/content/clear';
+import {greenA700, pinkA400} from 'material-ui/styles/colors';
 
-import LessonOne from './LessonOne'
-import LessonTwo from './LessonTwo'
-import LessonThree from './LessonThree'
-import LessonFour from './LessonFour'
-import LessonFive from './LessonFive'
+import RadioBtn from './RadioBtn'
+import SliderQuestion from './SliderQuestion'
+import FieldQuestion from './FieldQuestion'
+import BoolQuestion from './BoolQuestion'
+import CheckboxQuestion from './CheckboxQuestion'
 
-class Quiz extends Component {
+class QuizOne extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -60,8 +63,12 @@ class Quiz extends Component {
 
   handleNext() {
     const {stepIndex, lessonOne, lessonTwo, lessonThree, lessonFour, lessonFive} = this.state;
+    let { user } = this.props
     if (stepIndex === 0) {
-      if (lessonOne.color === "green") {
+      if (lessonOne.answer === "green") {
+        // firebase.database().ref('/users/' + user.userId + '/quizOne' + '/lessonOne').set({
+        //     point: 1
+        // });
         this.setState({
           lessonOne: {
             point: 1
@@ -71,6 +78,9 @@ class Quiz extends Component {
           massage: "You got 1 point"
         })
       } else {
+        // firebase.database().ref('/users/' + user.userId + '/quizOne' + '/lessonOne').set({
+        //     point: 0
+        // });
         this.setState({
           lessonOne: {
             point: 0
@@ -81,7 +91,7 @@ class Quiz extends Component {
         })
       }
     } else if (stepIndex === 1) {
-      if (lessonTwo.num === 2) {
+      if (lessonTwo.answer === 2) {
         this.setState({
           lessonTwo: {
             point: 1
@@ -181,31 +191,31 @@ class Quiz extends Component {
   }
   ;
 
-  answerOne(value) {
+  answerRadioBtn(value) {
     this.setState({
       lessonOne: value,
       disabledBtn: false
     })
   }
-  answerTwo(value) {
+  answerSlider(value) {
     this.setState({
       lessonTwo: value,
       disabledBtn: false
     })
   }
-  answerThree(value) {
+  answerField(value) {
     this.setState({
       lessonThree: value,
       disabledBtn: false
     })
   }
-  answerFour(value) {
+  answerBoolean(value) {
     this.setState({
       lessonFour: value,
       disabledBtn: false
     })
   }
-  answerFive(value) {
+  answerCheckbox(value) {
     this.setState({
       lessonFive: value,
       disabledBtn: false
@@ -215,15 +225,15 @@ class Quiz extends Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return <LessonOne answerOne={this.answerOne.bind(this)} titleColor={this.props.titleColor} />;
+        return <RadioBtn answerRadioBtn={this.answerRadioBtn.bind(this)} titleColor={this.props.titleColor} data={this.props.data.lesson[stepIndex]} />;
       case 1:
-        return <LessonTwo answerTwo={this.answerTwo.bind(this)} titleColor={this.props.titleColor} />;
+        return <SliderQuestion answerSlider={this.answerSlider.bind(this)} titleColor={this.props.titleColor} data={this.props.data.lesson[stepIndex]} />;
       case 2:
-        return <LessonThree answerThree={this.answerThree.bind(this)} titleColor={this.props.titleColor} />;
+        return <FieldQuestion answerField={this.answerField.bind(this)} titleColor={this.props.titleColor} data={this.props.data.lesson[stepIndex]} />;
       case 3:
-        return <LessonFour answerFour={this.answerFour.bind(this)} titleColor={this.props.titleColor} />;
+        return <BoolQuestion answerBoolean={this.answerBoolean.bind(this)} titleColor={this.props.titleColor} data={this.props.data.lesson[stepIndex]} />;
       case 4:
-        return <LessonFive answerFive={this.answerFive.bind(this)} titleColor={this.props.titleColor} />;
+        return <CheckboxQuestion answerCheckbox={this.answerCheckbox.bind(this)} titleColor={this.props.titleColor} data={this.props.data.lesson[stepIndex]} />;
       default:
         return 'You\'re a long way from home sonny jim!';
     }
@@ -243,6 +253,69 @@ class Quiz extends Component {
             <h5>You got {lessonOne.point + lessonTwo.point + lessonThree.point + lessonFour.point + lessonFive.point} point!!</h5>
           </div>
           <div style={styles.reset}>
+            {this.props.data.lesson.map((lesson) => {
+              if(lesson.lesson === 1) {
+                return (
+                  <div key={lesson.question} style={styles.answerList}>
+                    <div style={styles.icon}>
+                      {lessonOne.point === 1 ? <Done color={greenA700} /> : <Clear color={pinkA400} />}
+                    </div>
+                    <div>
+                      <p>{lesson.question}</p>
+                      <p style={styles.answer}>{lesson.trueAnswer}</p>
+                    </div>
+                  </div>
+                )
+              } else if(lesson.lesson === 2) {
+                return (
+                  <div key={lesson.question} style={styles.answerList}>
+                  <div style={styles.icon}>
+                    {lessonTwo.point === 1 ? <Done color={greenA700} /> : <Clear color={pinkA400} />}
+                  </div>
+                  <div>
+                    <p>{lesson.question}</p>
+                    <p style={styles.answer}>{lesson.trueAnswer}</p>
+                  </div>
+                </div>
+                )
+              } else if(lesson.lesson === 3) {
+                return (
+                  <div key={lesson.question} style={styles.answerList}>
+                    <div style={styles.icon}>
+                      {lessonThree.point === 1 ? <Done color={greenA700} /> : <Clear color={pinkA400} />}
+                    </div>
+                    <div>
+                      <p>{lesson.question}</p>
+                      <p style={styles.answer}>{lesson.trueAnswer}</p>
+                    </div>
+                  </div>
+                )
+              } else if(lesson.lesson === 4) {
+                return (
+                  <div key={lesson.question} style={styles.answerList}>
+                    <div style={styles.icon}>
+                      {lessonFour.point === 1 ? <Done color={greenA700} /> : <Clear color={pinkA400} />}
+                    </div>
+                    <div>
+                      <p>{lesson.question}</p>
+                      <p style={styles.answer}>{lesson.trueAnswer}</p>
+                    </div>
+                  </div>
+                )
+              } else if(lesson.lesson === 5) {
+                return (
+                  <div key={lesson.question} style={styles.answerList}>
+                    <div style={styles.icon}>
+                      {lessonFive.point === 1 ? <Done color={greenA700} /> : <Clear color={pinkA400} />}
+                    </div>
+                    <div>
+                      <p>{lesson.question}</p>
+                      <p style={styles.answer}>{lesson.trueAnswer}</p>
+                    </div>
+                  </div>
+                )
+              }
+            })}
             <RaisedButton 
               label="Reset Quiz" 
               primary={true} 
@@ -312,14 +385,34 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    padding: '2em 1em'
+    padding: '2em 1em',
   },
   reset: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
-    padding: '2em 1em'
+    padding: '2em 1em',
+    marginBottom: '1em',
+    boxShadow: "0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)",
+  },
+  answerList: {
+    display: 'flex',
+    flexDirection: 'row',
+    padding: '2em',
+    borderBottom: '1px solid rgb(221, 221, 221)'
+  },
+  icon: {
+    padding: '14px'
+  },
+  answer: {
+    fontWeight: 'bold'
   }
 }
 
-export default Quiz
+export const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(QuizOne)

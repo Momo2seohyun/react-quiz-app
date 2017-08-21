@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TextField from 'material-ui/TextField';
 
-class LessonThree extends Component {
+class FieldQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,16 +14,17 @@ class LessonThree extends Component {
     this.setState({
       disabled: false
     })
-    this.props.answerThree({
+    this.props.answerField({
       answer: value
     })
   }
 
   render() {
+    let { data } = this.props
     return (
       <div style={styles.container}>
         <div style={styles.question} className={`${this.props.titleColor}`}>
-          <h5>สัตว์ประจำชาติคือ ?</h5>
+          <h5>{data.question}</h5>
         </div>
         <div style={styles.answer}>
           <TextField hintText="Fill in the Blank" onChange={this.handleChange.bind(this)} />
@@ -50,4 +51,4 @@ const styles = {
   }
 };
 
-export default LessonThree
+export default FieldQuestion

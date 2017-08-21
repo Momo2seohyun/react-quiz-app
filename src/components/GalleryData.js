@@ -9,7 +9,7 @@ import ExpandTransition from 'material-ui/internal/ExpandTransition';
 import TextField from 'material-ui/TextField';
 
 import init from '../../public/js/init';
-import Quiz from './Quiz';
+import QuizOne from './quizone/QuizOne';
 
 class GalleryData extends Component {
   constructor(props) {
@@ -59,7 +59,6 @@ class GalleryData extends Component {
   render() {
     const { data } = this.props
     let { weather } = this.state
-
     return (
       <div className="col l4 m6 s12 gallery-item gallery-expand gallery-filter polygon">
         <div className="gallery-curve-wrapper">
@@ -79,7 +78,7 @@ class GalleryData extends Component {
             <p className="description">Wind - {weather.wind.speed + " " + weather.units.speed}</p>
             <p className="description">Sunrise - {weather.astronomy.sunrise}</p>
             <p className="description">Sunset - {weather.astronomy.sunset}</p>*/}
-            <Quiz titleColor={data.titleColor} />
+            {data.title === "Food & Drink" ? <QuizOne titleColor={data.titleColor} data={data} /> : undefined}
           </div>
           <div className="gallery-action">
             <a className="btn-floating btn-large waves-effect waves-light"><i className="material-icons">favorite</i></a>

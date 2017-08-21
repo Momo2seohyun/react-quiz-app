@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 
-class LessonOne extends Component {
+class radioBtn extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,28 +9,26 @@ class LessonOne extends Component {
     };
   }
 
-  changeColor(e, color) {
+  changeColor(e, answer) {
     const value = e.target.value;
     this.setState({
       disabled: false
     })
-    this.props.answerOne({
-      color: value
+    this.props.answerRadioBtn({
+      answer: value
     })
   }
 
   render() {
+    let { data } = this.props
     return (
       <div style={styles.container}>
         <div style={styles.question} className={`${this.props.titleColor}`}>
-          <h5>สีไหนไม่ใช่สีของธงชาติไทย ?</h5>
+          <h5>{data.question}</h5>
         </div>
         <div style={styles.answer}>
           <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={this.changeColor.bind(this)}>
-            <RadioButton value="red" label="สีแดง" style={styles.radioButton} />
-            <RadioButton value="white" label="สีขาว" style={styles.radioButton} />
-            <RadioButton value="green" label="สีเขียว" style={styles.radioButton}/>
-            <RadioButton value="blue" label="สีน้ำเงิน" style={styles.radioButton}/>
+          {data.answer.map((answer) => <RadioButton value={answer.value} label={answer.label} style={styles.radioButton} key={answer.value} />)}
           </RadioButtonGroup>
         </div>
       </div>
@@ -55,4 +53,4 @@ const styles = {
   }
 };
 
-export default LessonOne
+export default radioBtn

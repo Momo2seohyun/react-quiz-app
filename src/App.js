@@ -22,8 +22,11 @@ class App extends Component {
     const userId = firebase.auth().currentUser.uid;
     return firebase.database().ref('/users/' + userId).once('value')
       .then((value) => {
-        let displayName = value.val().displayName
-        this.props.dispatch(AddUser(displayName))
+        let user = {
+          userId: userId,
+          displayName: value.val().displayName
+        }
+        this.props.dispatch(AddUser(user))
       });
   }
 
@@ -33,35 +36,34 @@ class App extends Component {
   }
 
   render() {
-    const loading = this.props;
-    const displayName = this.props.user;
+    const {loading, user} = this.props;
     return (
       <div>
-        {!displayName
+        {!user
           ? <div style={styles.loading}><CircularProgress size={300} /></div>
-          : <div><AppBar
-            showMenuIconButton={false}
-            title={displayName}
-            style={styles.appBar}
-            iconElementRight={
-              <IconMenu
-                iconButtonElement={
-                  <IconButton style={{ padding: "0" }}>
-                    <Avatar size={30} />
-                  </IconButton>
-                }
-                targetOrigin={{ horizontal: "right", vertical: "top" }}
-                anchorOrigin={{ horizontal: "right", vertical: "top" }}
-              >
-                <MenuItem
-                  primaryText="Sign out"
-                  onTouchTap={this.isSignOut.bind(this)}
-                />
-              </IconMenu>
-            }
-          />{this.props.children}</div>
+          : <div>
+              <AppBar 
+                showMenuIconButton={false}
+                title={user.displayName}
+                style={styles.appBar}
+                iconElementRight={
+                  <IconMenu
+                    iconButtonElement={
+                      <IconButton style={{ padding: "0" }}>
+                        <Avatar size={30} />
+                      </IconButton>
+                    }
+                    targetOrigin={{ horizontal: "right", vertical: "top" }}
+                    anchorOrigin={{ horizontal: "right", vertical: "top" }}
+                  >
+                    <MenuItem primaryText="Sign out" onTouchTap={this.isSignOut.bind(this)} />
+                  </IconMenu>
+                  }
+              />
+                {this.props.children}
+            </div>
         }
-      </div >
+      </div>
     );
   }
 }

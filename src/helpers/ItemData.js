@@ -1,3 +1,5 @@
+import { Required } from "./validate";
+
 export const data =[
   {
     img: "images/001.jpg",
@@ -7,7 +9,59 @@ export const data =[
   {
     img: "images/002.jpg",
     title: "Food & Drink",
-    titleColor: "header-color-green"
+    titleColor: "header-color-green",
+    lesson: [
+      {
+        lesson: 1,
+        question: "สีไหนไม่ใช่สีของธงชาติไทย ?",
+        trueAnswer: "สีเขียว",
+        answer: [
+          {
+            label: "สีแดง",
+            value: "red"
+          },
+          {
+            label: "สีขาว",
+            value: "white"
+          },
+          {
+            label: "สีเขียว",
+            value: "green"
+          },
+          {
+            label: "สีน้ำเงิน",
+            value: "blue"
+          }
+        ]
+      },
+      {
+        lesson: 2,
+        question: "1 + 1 = ?",
+        trueAnswer: "2",
+        answer: {
+          min: 0,
+          max: 5,
+          step: 1
+        }
+      },
+      {
+        lesson: 3,
+        question: "สัตว์ประจำชาติคือ ?",
+        trueAnswer: "elephant",
+        validate: Required,
+      },
+      {
+        lesson: 4,
+        question: "เลือดมนุษย์มีสีแดง ?",
+        trueAnswer: "True",
+      },
+      {
+        lesson: 5,
+        question: "เลือกข้อที่เป็นกรุ๊ปเลือด ?",
+        trueAnswer: ["O, A, B"],
+        answer: ["O","A","B","C","D"]
+      }
+    ]
   },
   {
     img: "images/003.jpg",

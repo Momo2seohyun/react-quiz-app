@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from 'material-ui/Slider';
 
-class LessonTwo extends Component {
+class SliderQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,23 +15,24 @@ class LessonTwo extends Component {
       disabled: false,
       sliderValue: value
     });
-    this.props.answerTwo({
-      num: value
+    this.props.answerSlider({
+      answer: value
     })
   };
 
   render() {
+    let { data } = this.props
     return (
       <div style={styles.container}>
         <div style={styles.question} className={`${this.props.titleColor}`}>
-          <h5>1 + 1 = ?</h5>
+          <h5>{data.question}</h5>
         </div>
         <div style={styles.answer}>
           <h5 style={styles.point}>{this.state.sliderValue}</h5>
           <Slider
-          min={0}
-          max={5}
-          step={1}
+          min={data.answer.min}
+          max={data.answer.max}
+          step={data.answer.step}
           value={this.state.sliderValue}
           onChange={this.handleSlider.bind(this)}
           />
@@ -59,4 +60,4 @@ const styles = {
   }
 };
 
-export default LessonTwo
+export default SliderQuestion

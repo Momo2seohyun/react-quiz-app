@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FlatButton from 'material-ui/FlatButton';
 
-class LessonFour extends Component {
+class BoolQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class LessonFour extends Component {
       bgTrue: styles.bgTrue,
       bgFalse: styles.btnMargin
     })
-    this.props.answerFour({
+    this.props.answerBoolean({
       answer: true
     })
   }
@@ -28,16 +28,17 @@ class LessonFour extends Component {
       bgFalse: styles.bgFalse,
       bgTrue: styles.btnMargin,
     })
-    this.props.answerFour({
+    this.props.answerBoolean({
       answer: false
     })
   }
 
   render() {
+    let { data } = this.props
     return (
       <div style={styles.container}>
         <div style={styles.question} className={`${this.props.titleColor}`}>
-          <h5>เลือดมนุษย์มีสีแดง ?</h5>
+          <h5>{data.question}</h5>
         </div>
         <div style={styles.btn}>
           <FlatButton label="True" onTouchTap={this.handleTrue.bind(this)} rippleColor="green" style={this.state.bgTrue} />
@@ -78,4 +79,4 @@ const styles = {
   }
 }
 
-export default LessonFour
+export default BoolQuestion

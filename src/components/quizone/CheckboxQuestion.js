@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Checkbox from 'material-ui/Checkbox';
 
-class LessonFive extends Component {
+class CheckboxQuestion extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class LessonFive extends Component {
    updateCheck(label, e, answer) {
    	if(label === "O") {
    		this.setState({disabled: false, checkO: answer})
-   		this.props.answerFive({
+   		this.props.answerCheckbox({
 	    	groupO: answer,
 	    	groupA: this.state.checkA,
 	    	groupB: this.state.checkB,
@@ -26,7 +26,7 @@ class LessonFive extends Component {
 	    })
    	} else if (label === "A") {
    		this.setState({disabled: false, checkA: answer})
-   		this.props.answerFive({
+   		this.props.answerCheckbox({
 	    	groupO: this.state.checkO,
 	    	groupA: answer,
 	    	groupB: this.state.checkB,
@@ -35,7 +35,7 @@ class LessonFive extends Component {
 	    })
    	} else if (label === "B") {
    		this.setState({disabled: false, checkB: answer})
-   		this.props.answerFive({
+   		this.props.answerCheckbox({
 	    	groupO: this.state.checkO,
 	    	groupA: this.state.checkA,
 	    	groupB: answer,
@@ -44,7 +44,7 @@ class LessonFive extends Component {
 	    })
    	} else if (label === "C") {
    		this.setState({disabled: false, checkC: answer})
-   		this.props.answerFive({
+   		this.props.answerCheckbox({
 	    	groupO: this.state.checkO,
 	    	groupA: this.state.checkA,
 	    	groupB: this.state.checkB,
@@ -53,7 +53,7 @@ class LessonFive extends Component {
 	    })
    	} else if (label === "D") {
    		this.setState({disabled: false, checkD: answer})
-   		this.props.answerFive({
+   		this.props.answerCheckbox({
 	    	groupO: this.state.checkO,
 	    	groupA: this.state.checkA,
 	    	groupB: this.state.checkB,
@@ -64,20 +64,19 @@ class LessonFive extends Component {
   }
 
   render() {
+    let { data } = this.props
     return (
       <div style={styles.container}>
         <div style={styles.question} className={`${this.props.titleColor}`}>
-          <h5>เลือกข้อที่เป็นกรุ๊ปเลือด ?</h5>
+          <h5>{data.question}</h5>
         </div>
         <div style={styles.answer}>
-          {checkBox.map((cb) => <Checkbox label={cb} key={cb} onCheck={this.updateCheck.bind(this, cb)} />)}
+          {data.answer.map((cb) => <Checkbox label={cb} key={cb} onCheck={this.updateCheck.bind(this, cb)} />)}
         </div>
       </div>
     )
   }
 }
-
-const checkBox = ["O","A","B","C","D"]
 
 const styles = {
   container: {
@@ -93,4 +92,4 @@ const styles = {
   }
 };
 
-export default LessonFive
+export default CheckboxQuestion
