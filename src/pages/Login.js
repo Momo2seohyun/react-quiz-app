@@ -34,9 +34,9 @@ export class Login extends Component {
 
     firebase.auth().signInAnonymously()
       .then((respons) => {
-        firebase.database().ref('/users/' + respons.uid).set({
-          displayName: displayName
-        });
+        // firebase.database().ref('/users/' + respons.uid).set({
+        //   displayName: displayName
+        // });
         self.setState({
           signInError: false,
           loaded: true

@@ -24,7 +24,7 @@ class App extends Component {
       .then((value) => {
         let user = {
           userId: userId,
-          displayName: value.val().displayName
+          //displayName: value.val().displayName
         }
         this.props.dispatch(AddUser(user))
       });
@@ -44,7 +44,7 @@ class App extends Component {
           : <div>
               <AppBar 
                 showMenuIconButton={false}
-                title={user.displayName}
+                //title={user.displayName}
                 style={styles.appBar}
                 iconElementRight={
                   <IconMenu
