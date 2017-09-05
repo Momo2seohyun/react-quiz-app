@@ -8,6 +8,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import RaisedButton from 'material-ui/RaisedButton';
 import Snackbar from 'material-ui/Snackbar';
 import LockIcon from 'material-ui/svg-icons/action/lock-outline';
+import firebase from '../components/Fire'
 
 import { AddUser } from '../actions'
 import { Required, isLetter } from '../helpers/validate'

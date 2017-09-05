@@ -7,6 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { createStore, compose, applyMiddleware } from 'redux';
 import { Router, browserHistory } from 'react-router';
+import firebase from './components/Fire'
 
 import reducer from './reducers';
 import App from './App';

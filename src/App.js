@@ -6,6 +6,7 @@ import IconMenu from "material-ui/IconMenu";
 import IconButton from "material-ui/IconButton";
 import MenuItem from "material-ui/MenuItem";
 import CircularProgress from 'material-ui/CircularProgress';
+import firebase from './components/Fire'
 
 import { AddUser } from './actions'
 import "./index.css";
